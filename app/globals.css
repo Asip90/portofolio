@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* next-themes toggles .dark on <html>; opt out of media-based dark. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens — sampled from the reference: deep cobalt brand, blue-tinted
+   light wash, white surfaces, slate-navy ink. Accents (red/orange/deep/blue)
+   are reserved for data — skill bars, ratings, status. No purple anywhere.
+--------------------------------------------------------------------------- */
+:root {
+  --bg: #eef4fc;
+  --bg-deep: #e4eefb;
+  --surface: #ffffff;
+  --surface-2: #f4f8fe;
+  --ink: #0f1b33;
+  --ink-soft: #28324a;
+  --muted: #5b6b85;
+  --faint: #8696b0;
+  --line: #e0e8f4;
+  --line-strong: #cdd9ec;
+
+  --brand: #1d3fb5;
+  --brand-bright: #2d5bd7;
+  --brand-deep: #14275f;
+  --brand-wash: #dbe6fb;
+  --on-brand: #ffffff;
+
+  --accent-red: #e5484d;
+  --accent-orange: #f5912b;
+  --accent-deep: #2c3a4a;
+  --rating: #f6a609;
+
+  --ring: color-mix(in srgb, var(--brand) 45%, transparent);
+  --shadow-sm: 0 1px 2px rgba(15, 27, 51, 0.04), 0 2px 8px rgba(15, 27, 51, 0.05);
+  --shadow-md: 0 6px 18px rgba(15, 27, 51, 0.08), 0 2px 6px rgba(15, 27, 51, 0.04);
+  --shadow-lift: 0 24px 48px -16px rgba(20, 39, 95, 0.28), 0 8px 20px -8px rgba(15, 27, 51, 0.12);
+  --shadow-brand: 0 18px 40px -16px rgba(29, 63, 181, 0.55);
+}
+
+.dark {
+  --bg: #070d1c;
+  --bg-deep: #0a1226;
+  --surface: #0f1830;
+  --surface-2: #14203c;
+  --ink: #eaf1fc;
+  --ink-soft: #c6d3ea;
+  --muted: #94a4c2;
+  --faint: #6a7c9e;
+  --line: #1f2c47;
+  --line-strong: #2a3a5c;
+
+  --brand: #6f9bff;
+  --brand-bright: #9bbcff;
+  --brand-deep: #b9cfff;
+  --brand-wash: #16224a;
+  --on-brand: #07112b;
+
+  --accent-red: #ff6b70;
+  --accent-orange: #ffae5c;
+  --accent-deep: #9fb4d6;
+  --rating: #ffc24a;
+
+  --ring: color-mix(in srgb, var(--brand) 55%, transparent);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 22px rgba(0, 0, 0, 0.45);
+  --shadow-lift: 0 24px 50px -16px rgba(0, 0, 0, 0.6);
+  --shadow-brand: 0 18px 40px -16px rgba(20, 40, 100, 0.8);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-brand: var(--brand);
+  --color-brand-bright: var(--brand-bright);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-wash: var(--brand-wash);
+  --color-on-brand: var(--on-brand);
+  --color-accent-red: var(--accent-red);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-deep: var(--accent-deep);
+  --color-rating: var(--rating);
+
+  --font-display: var(--font-display), "Plus Jakarta Sans", sans-serif;
+  --font-sans: var(--font-sans), "Inter", sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--brand);
+    color: var(--on-brand);
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+}
+
+@layer components {
+  /* Monospace eyebrow that grounds the developer identity. */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand);
+    font-weight: 500;
+  }
+  .eyebrow::before {
+    content: "// ";
+    color: var(--faint);
+  }
+}
+
+@layer utilities {
+  .section {
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+  .shell {
+    width: 100%;
+    max-width: 75rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+/* Decorative tick field — the scattered dashes from the reference, drawn
+   with a repeating gradient so it stays crisp and weightless. */
+.tick-field {
+  background-image: repeating-linear-gradient(
+    -52deg,
+    color-mix(in srgb, var(--brand) 34%, transparent) 0 1.5px,
+    transparent 1.5px 9px
+  );
+  -webkit-mask-image: radial-gradient(circle at center, #000 35%, transparent 72%);
+  mask-image: radial-gradient(circle at center, #000 35%, transparent 72%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

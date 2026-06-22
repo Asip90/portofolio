@@ -1,0 +1,2 @@
+Déposez ici les captures des projets, nommées par slug :
+openfood.png, vetcare-plus.png, nouyon-web.png, montoit-bj.png, compa.png, nouyon-app.png, historia.png

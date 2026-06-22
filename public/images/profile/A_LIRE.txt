@@ -1,0 +1,3 @@
+Déposez ici la photo de profil :
+- jeremie.jpg (hero, format carré ~640px)
+- about.jpg (section À propos, format 4:5)
