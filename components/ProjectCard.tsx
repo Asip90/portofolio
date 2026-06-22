@@ -1,13 +1,10 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/types";
 
-/**
- * Project card. The visual is a designed placeholder keyed to each project's
- * accent — drop a real screenshot at /public/images/projects/<slug>.png and
- * render it inside the .preview block to replace it.
- */
 export function ProjectCard({ project }: { project: Project }) {
-  const { title, summary, description, categories, stack, url, status, accent } = project;
+  const { title, summary, description, categories, stack, url, status, accent, image } =
+    project;
   const inProgress = status === "in-progress";
   const Wrapper = url ? "a" : "div";
 
@@ -16,27 +13,32 @@ export function ProjectCard({ project }: { project: Project }) {
       {...(url ? { href: url, target: "_blank", rel: "noopener noreferrer" } : {})}
       className="card group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lift)]"
     >
-      {/* preview */}
-      <div
-        className="preview relative aspect-[16/10] overflow-hidden"
-        style={{
-          background: `linear-gradient(140deg, ${accent}, color-mix(in srgb, ${accent} 55%, #0f1b33))`,
-        }}
-      >
-        <div className="tick-field absolute inset-0 opacity-25" aria-hidden />
-        <div className="absolute inset-0 flex flex-col justify-between p-5">
-          <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-white/35" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+      {/* preview — real mockup when available, styled placeholder otherwise */}
+      <div className="relative aspect-[16/10] overflow-hidden bg-surface-2">
+        {image ? (
+          <Image
+            src={image}
+            alt={`Aperçu du projet ${title}`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(140deg, ${accent}, color-mix(in srgb, ${accent} 55%, #0f1b33))`,
+            }}
+          >
+            <div className="tick-field absolute inset-0 opacity-25" aria-hidden />
+            <div className="absolute bottom-5 left-5">
+              <p className="font-display text-2xl font-extrabold text-white">{title}</p>
+            </div>
           </div>
-          <p className="font-display text-2xl font-extrabold leading-tight text-white">
-            {title}
-          </p>
-        </div>
+        )}
 
         {url && (
-          <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/15 text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1">
+          <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-ink/60 text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
             <ArrowUpRight className="h-[1.1rem] w-[1.1rem]" />
           </span>
         )}
@@ -61,8 +63,9 @@ export function ProjectCard({ project }: { project: Project }) {
             </span>
           ))}
         </div>
-        <h3 className="mt-3 text-lg font-bold text-ink">{summary}</h3>
-        <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted">{description}</p>
+        <h3 className="mt-3 text-lg font-bold text-ink">{title}</h3>
+        <p className="mt-0.5 text-sm font-medium text-brand">{summary}</p>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{description}</p>
         <p className="mt-4 border-t border-line pt-3 font-mono text-xs text-faint">
           {stack.join("  ·  ")}
         </p>

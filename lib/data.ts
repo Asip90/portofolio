@@ -106,6 +106,7 @@ export const projects: Project[] = [
     url: "https://openfood.site",
     status: "live",
     accent: "var(--brand)",
+    image: "/images/projects/openfood.png",
   },
   {
     slug: "vetcare-plus",
@@ -118,6 +119,7 @@ export const projects: Project[] = [
     url: "https://vetcareplus.vercel.app",
     status: "live",
     accent: "var(--accent-red)",
+    image: "/images/projects/vetcare-plus.jpg",
   },
   {
     slug: "nouyon-web",
@@ -130,6 +132,7 @@ export const projects: Project[] = [
     url: "https://nouyon.site",
     status: "live",
     accent: "var(--accent-orange)",
+    image: "/images/projects/nouyon.png",
   },
   {
     slug: "montoit-bj",
@@ -141,6 +144,7 @@ export const projects: Project[] = [
     stack: ["Flutter", "Firebase"],
     status: "live",
     accent: "var(--brand-bright)",
+    image: "/images/projects/montoit-bj.png",
   },
   {
     slug: "compa",
@@ -152,6 +156,7 @@ export const projects: Project[] = [
     stack: ["React Native", "Node.js"],
     status: "live",
     accent: "var(--accent-deep)",
+    image: "/images/projects/compa.png",
   },
   {
     slug: "nouyon-app",
@@ -163,6 +168,7 @@ export const projects: Project[] = [
     stack: ["Flutter", "Firebase"],
     status: "live",
     accent: "var(--brand)",
+    image: "/images/projects/nouyon.png",
   },
   {
     slug: "historia",

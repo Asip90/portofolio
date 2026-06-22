@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { GraduationCap, Briefcase } from "lucide-react";
 import { skills, site } from "@/lib/data";
 import { Reveal } from "@/components/Reveal";
@@ -11,12 +12,23 @@ export function About() {
         <Reveal className="relative mx-auto w-full max-w-sm">
           <div className="absolute -left-6 -top-6 h-28 w-28 rounded-full bg-brand/15 blur-[2px]" aria-hidden />
           <div className="absolute -bottom-8 -right-4 h-20 w-20 rounded-full bg-accent-orange/20" aria-hidden />
-          <div className="absolute -bottom-3 left-10 h-14 w-14 rounded-full bg-brand/25" aria-hidden />
-          <div className="relative overflow-hidden rounded-[2rem] border border-line-strong bg-linear-to-br from-brand to-brand-deep shadow-[var(--shadow-lift)]">
-            {/* Swap for a real studio photo at /public/images/profile/about.jpg */}
-            <div className="grid aspect-[4/5] place-items-center">
-              <span className="font-display text-[6rem] font-extrabold text-on-brand/95">JB</span>
-            </div>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-line-strong bg-brand-wash shadow-[var(--shadow-lift)]">
+            <Image
+              src="/images/profile/about.png"
+              alt="Jérémie Bodjrenou en studio"
+              fill
+              sizes="(max-width: 1024px) 80vw, 384px"
+              className="object-cover object-top"
+            />
+          </div>
+          <div className="absolute -right-5 -top-6 hidden w-32 rotate-3 overflow-hidden rounded-xl border-4 border-surface shadow-[var(--shadow-lift)] sm:block">
+            <Image
+              src="/images/workspace.png"
+              alt="Espace de travail de Jérémie"
+              width={320}
+              height={180}
+              className="aspect-[16/10] object-cover"
+            />
           </div>
           <div className="card absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2.5 whitespace-nowrap rounded-2xl px-4 py-2.5">
             <Briefcase className="h-4 w-4 text-brand" />

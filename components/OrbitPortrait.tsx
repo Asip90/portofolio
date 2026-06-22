@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { BadgeCheck, Star } from "lucide-react";
 
@@ -40,15 +41,16 @@ export function OrbitPortrait() {
       {/* soft wash behind the disc */}
       <div className="absolute inset-8 rounded-full bg-linear-to-b from-brand-wash to-transparent" aria-hidden />
 
-      {/* portrait disc (placeholder) */}
-      <div className="absolute inset-[14%] overflow-hidden rounded-full border border-line-strong bg-linear-to-br from-brand to-brand-deep shadow-[var(--shadow-lift)]">
-        {/* <Image src="/images/profile/jeremie.jpg" alt="Jérémie Bodjrenou" fill priority sizes="320px" className="object-cover" /> */}
-        <div className="grid h-full w-full place-items-center">
-          <span className="font-display text-[5.5rem] font-extrabold leading-none text-on-brand/95">
-            JB
-          </span>
-        </div>
-        <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-brand-deep/40 to-transparent" />
+      {/* portrait disc */}
+      <div className="absolute inset-[14%] overflow-hidden rounded-full border border-line-strong bg-brand-wash shadow-[var(--shadow-lift)]">
+        <Image
+          src="/images/profile/jeremie.png"
+          alt="Jérémie Bodjrenou, développeur web et mobile"
+          fill
+          priority
+          sizes="(max-width: 1024px) 70vw, 360px"
+          className="object-cover object-top"
+        />
       </div>
 
       {/* rating chip — top */}

@@ -15,6 +15,7 @@ export interface Project {
   url?: string;
   status?: "live" | "in-progress";
   accent: string;
+  image?: string;
 }
 
 export interface Service {

@@ -56,11 +56,20 @@ export const metadata: Metadata = {
     siteName: `${site.name} — Portfolio`,
     title: `${site.name} | ${site.role} au Bénin`,
     description: "Solutions digitales intelligentes au Bénin et en Afrique.",
+    images: [
+      {
+        url: "/images/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.fullName}, ${site.role}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} | ${site.fullName}`,
     description: "Développeur web & mobile passionné par l'IA.",
+    images: ["/images/og.png"],
   },
   robots: { index: true, follow: true },
 };
